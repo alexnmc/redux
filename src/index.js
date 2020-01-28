@@ -10,8 +10,8 @@ const rootEl = document.getElementById('root')
 const render = () => ReactDOM.render(
   <App
     state={store.getState()}
-    setData = {(name) => store.dispatch({type: "CHANGE_FIRSTNAME", payload: name})}
-    setData2 = {() => store.dispatch({type: "CHANGE_FIRSTNAME2"})}
+    setData = {(name) => store.dispatch({type: "CHANGE_DATA", payload: name})}
+    setData2 = {() => store.dispatch({type: "CHANGE_DATA2"})}
   />,
   rootEl
 )
