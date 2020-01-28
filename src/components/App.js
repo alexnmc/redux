@@ -31,7 +31,7 @@ class App extends Component {
 
 App.propTypes = {
   setData: PropTypes.func.isRequired,
-  setData2: PropTypes.func.isRequired
+  setData2: PropTypes.func.isRequired,
 }
 
 export default App

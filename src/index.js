@@ -5,7 +5,6 @@ import App from './components/App'
 import data from './reducers'
 
 const store = createStore(data)
-const rootEl = document.getElementById('root')
 
 const render = () => ReactDOM.render(
   <App
@@ -13,7 +12,7 @@ const render = () => ReactDOM.render(
     setData = {(name) => store.dispatch({type: "CHANGE_DATA", payload: name})}
     setData2 = {() => store.dispatch({type: "CHANGE_DATA2"})}
   />,
-  rootEl
+  document.getElementById('root')
 )
 
 render()

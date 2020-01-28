@@ -10,4 +10,4 @@ export default (state = {data:"", data2:""} , action) => {
       default:
         return state
     }
-  }
+}
