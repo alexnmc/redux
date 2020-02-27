@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Data from './Data'
 
 class App extends Component {
   
@@ -17,7 +18,8 @@ class App extends Component {
     const { state } = this.props
     return (
       <div style = {{display: "flex", flexDirection: "column", width: "100vw", height: "100vh", alignItems: "center", justifyContent:"start"}}>
-        <h1 style = {{height: "30pt"}}>{state.data2}</h1>
+       <Data state = {state}/>
+       <h1 style = {{height: "30pt"}}>{state.data2}</h1>
         <input 
            name = 'input1'
            onChange={this.handleChange}
