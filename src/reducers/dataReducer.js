@@ -1,12 +1,7 @@
 
 
-let initialState = {
-    data:'',
-    data2:''
-}
 
-
-export default (state = initialState , action) => {
+export default (state, action) => {
     switch (action.type) {
       case "CHANGE_DATA":
         return {
@@ -18,7 +13,13 @@ export default (state = initialState , action) => {
             ...state,
             data2: state.data, 
           }
+      case "SET_APIDATA" :
+        return {
+          ...state,
+          apiData: action.payload
+        }
       default:
         return state
     }
 }
+

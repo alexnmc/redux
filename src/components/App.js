@@ -1,40 +1,60 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Data from './Data'
+import { connect } from "react-redux";
+import  changeData  from "../actions/changeData";
+import  changeData2  from "../actions/changeData2";
+import  getRequest from "../actions/getRequest";
 
 class App extends Component {
   
 
   handleChange = (e) => {
     e.preventDefault()
-    this.props.setData(e.target.value)
+    this.props.changeData(e.target.value)  // action
   }
 
   handleSubmit = () => {
-    this.props.setData2()
+    this.props.changeData2() // action
   }
 
   render() {
-    const { state } = this.props
+    console.log(this.props)
     return (
       <div style = {{display: "flex", flexDirection: "column", width: "100vw", height: "100vh", alignItems: "center", justifyContent:"start"}}>
-       <Data state = {state}/>
-       <h1 style = {{height: "30pt"}}>{state.data2}</h1>
+       <h1 style = {{height: "30pt"}}>{this.props.data2}</h1>
         <input 
            name = 'input1'
            onChange={this.handleChange}
-           value = {state.data}
+           value = {this.props.data}
         />
         <button onClick = {this.handleSubmit}>Submit</button>
+        <button onClick = {this.props.getRequest}>get data</button>
+        {this.props.apiData.map(item => {
+          return(
+            <div key = {item._id}>
+              <h2>{item.username}</h2>
+            </div>
+          )
+        })}
       </div>
     )
   }
 }
 
 App.propTypes = {
-  setData: PropTypes.func.isRequired,
-  setData2: PropTypes.func.isRequired,
+  changeData: PropTypes.func.isRequired,
+  changeData2: PropTypes.func.isRequired,
 }
 
-export default App
+const mapStateToProps = state => ({
+  ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+  changeData: (payload) => dispatch(changeData(payload)),
+  changeData2: (payload) => dispatch(changeData2(payload)),
+  getRequest: (payload) => dispatch(getRequest(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 

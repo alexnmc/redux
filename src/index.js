@@ -1,19 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
+import { Provider } from "react-redux";
+import configureStore from "./store";
 import App from './components/App'
-import data from './reducers'
 
-const store = createStore(data)
 
-const render = () => ReactDOM.render(
-  <App
-    state={store.getState()}
-    setData = {(name) => store.dispatch({type: "CHANGE_DATA", payload: name})}
-    setData2 = {() => store.dispatch({type: "CHANGE_DATA2"})}
-  />,
+
+
+ReactDOM.render(
+  <Provider store = {configureStore()}>
+    <App />
+  </Provider>,
   document.getElementById('root')
-)
+);
 
-render()
-store.subscribe(render)
