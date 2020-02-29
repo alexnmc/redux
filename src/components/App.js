@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from "react-redux";
 import  changeData  from "../actions/changeData";
 import  changeData2  from "../actions/changeData2";
-import  getRequest from "../actions/getRequest";
+import  loadData from "../actions/loadData";
 
 class App extends Component {
   
@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log("this.props:", this.props)
     return (
       <div style = {{display: "flex", flexDirection: "column", width: "100vw", height: "100vh", alignItems: "center", justifyContent:"start"}}>
        <h1 style = {{height: "30pt"}}>{this.props.data2}</h1>
@@ -28,7 +28,7 @@ class App extends Component {
            value = {this.props.data}
         />
         <button onClick = {this.handleSubmit}>Submit</button>
-        <button onClick = {this.props.getRequest}>get data</button>
+        <button onClick = {this.props.loadData}>get data</button>
         {this.props.apiData.map(item => {
           return(
             <div key = {item._id}>
@@ -53,7 +53,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   changeData: (payload) => dispatch(changeData(payload)),
   changeData2: (payload) => dispatch(changeData2(payload)),
-  getRequest: (payload) => dispatch(getRequest(payload))
+  loadData: (payload) => dispatch(loadData(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
