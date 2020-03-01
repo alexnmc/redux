@@ -9,14 +9,14 @@ export default (state, action) => {
           data: action.payload
         }
       case "CHANGE_DATA2":
-          return {
-            ...state,
-            data2: state.data, 
-          }
-      case "SET_APIDATA" :
         return {
           ...state,
-          apiData: action.payload
+          data2: state.data, 
+        }
+      case "SET_APIDATA" :
+        return {
+        ...state,
+        apiData: action.payload
         }
       default:
         return state

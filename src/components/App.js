@@ -27,8 +27,9 @@ class App extends Component {
            onChange={this.handleChange}
            value = {this.props.data}
         />
-        <button onClick = {this.handleSubmit}>Submit</button>
-        <button onClick = {this.props.loadData}>get data</button>
+        <button onClick = {this.handleSubmit}>display</button>
+        <button onClick = {this.props.loadData}>get data</button> 
+        <h3>Api data:</h3>
         {this.props.apiData.map(item => {
           return(
             <div key = {item._id}>
@@ -44,14 +45,15 @@ class App extends Component {
 App.propTypes = {
   changeData: PropTypes.func.isRequired,
   changeData2: PropTypes.func.isRequired,
+  loadData: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ({  // makes redux state available in component via this.props
   ...state
 });
 
-const mapDispatchToProps = dispatch => ({
-  changeData: (payload) => dispatch(changeData(payload)),
+const mapDispatchToProps = dispatch => ({    // makes action availabale in the component via this.props
+  changeData: (payload) => dispatch(changeData(payload)), 
   changeData2: (payload) => dispatch(changeData2(payload)),
   loadData: (payload) => dispatch(loadData(payload))
 });
