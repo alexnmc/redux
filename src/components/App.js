@@ -52,7 +52,7 @@ const mapStateToProps = state => ({  // makes redux state available in component
   ...state
 });
 
-const mapDispatchToProps = dispatch => ({    // makes action availabale in the component via this.props
+const mapDispatchToProps = dispatch => ({    // makes action available in the component via this.props
   changeData: (payload) => dispatch(changeData(payload)), 
   changeData2: (payload) => dispatch(changeData2(payload)),
   loadData: (payload) => dispatch(loadData(payload))
